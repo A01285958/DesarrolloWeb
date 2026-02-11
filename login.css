@@ -1,25 +1,29 @@
 body {
     display:flex;
     align-items: center;
+    justify-content: center;
     height: 100vh;
     text-align: center;
 }
 .form-signin {
-    max-width: 200px;
-    padding: 2rem;
+    max-width: 350px;
+    padding: 10rem;
     background: #b2bdc8;
     border-radius: 50px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
 .form-signin input[type="username"] {
+    font-size: medium;
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
     border-bottom-left-radius: 0;
   }
   
 .form-signin input[type="password"] {
+    font-size: medium;
     margin-bottom: 10px;
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+

@@ -1,0 +1,10 @@
+.contenedor {
+  display: flex;
+  gap: 20px; 
+}
+
+.column {
+  flex: 1; 
+  background: #b2bdc8;
+  padding: 20px;
+}
