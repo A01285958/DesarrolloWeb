@@ -1,10 +1,14 @@
+header{
+    text-align: center;
+}
 .contenedor {
   display: flex;
-  gap: 20px; 
+  gap: 20px;
+  text-align: center; 
 }
 
 .column {
   flex: 1; 
-  background: #b2bdc8;
+  background: #c27ed8;
   padding: 20px;
 }
