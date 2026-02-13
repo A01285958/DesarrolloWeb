@@ -3,25 +3,30 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Conecta el archivo css para el estilo -->
         <link rel ="stylesheet" href="login.css">
         <title>Login</title>
     </head>
     <body>
         <main class="form-signin ">
             <form>
-            <h1>Login</h1>
-            <div class="form-floating">
-            <label for="floatingInput">Username</label>
-            <br>
-            <input type="username" class="form-control" id="floatingInput" placeholder="name@example.com">
-            </div>
-            <div class="form-floating">
-            <label for="floatingPassword">Password</label>
-            <br>
-            <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-            </div>
-            <br>
-            <button id="btnLogin" type="submit">Login</button>
+                <h1>Login</h1>
+                <!-- Contenedor del campo Username -->
+                <div class="form-floating">
+                <label for="floatingInput">Username</label>
+                <br>
+                <!-- Campo de texto para ingresar usuario -->
+                <input type="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+                </div>
+                <!-- Contenedor del campo password -->
+                <div class="form-floating">
+                <label for="floatingPassword">Password</label>
+                <br>
+                <!-- Campo de texto de contraseña -->
+                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                </div>
+                <br>
+                <button id="btnLogin" type="submit">Login</button>
             </form>
         </main> 
     </body>

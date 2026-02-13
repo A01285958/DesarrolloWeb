@@ -1,3 +1,4 @@
+/* Alinear el contenedor completo al centro */
 body {
     display:flex;
     align-items: center;
@@ -5,14 +6,17 @@ body {
     height: 100vh;
     text-align: center;
 }
+
+/* Darle estilo al contenedor del forms */
 .form-signin {
     max-width: 350px;
-    padding: 10rem;
-    background: #c27ed8;
+    padding: 5rem;
+    background: #d6b9e2;
     border-radius: 50px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   }
 
+/* Estilo de como se ven los campos de texto de username y passowrd */
 .form-signin input[type="username"] {
     font-size: medium;
     margin-bottom: -1px;
