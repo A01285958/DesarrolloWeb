@@ -9,25 +9,28 @@
     </head>
     <body>
         <main class="form-signin ">
-            <form>
-                <h1>Login</h1>
+            <form action="home.html">
+                <h1>Inicio de Sesion</h1>
                 <!-- Contenedor del campo Username -->
                 <div class="form-floating">
-                <label for="floatingInput">Username</label>
+                <label for="floatingInput">Nombre de Usuario o Correo</label>
                 <br>
                 <!-- Campo de texto para ingresar usuario -->
-                <input type="username" class="form-control" id="floatingInput" placeholder="name@example.com">
+                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 </div>
                 <!-- Contenedor del campo password -->
                 <div class="form-floating">
-                <label for="floatingPassword">Password</label>
+                <label for="floatingPassword">Contraseña</label>
                 <br>
                 <!-- Campo de texto de contraseña -->
                 <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
                 </div>
                 <br>
-                <button id="btnLogin" type="submit">Login</button>
+                <button id="btnLogin" type="submit">Iniciar Sesion</button>
             </form>
+            <br>
+            <a href="registro.html" class="btn">Registrarse</a>
         </main> 
+        
     </body>
 </html>

@@ -17,7 +17,7 @@ body {
   }
 
 /* Estilo de como se ven los campos de texto de username y passowrd */
-.form-signin input[type="username"] {
+.form-signin input[type="email"] {
     font-size: medium;
     margin-bottom: -1px;
     border-bottom-right-radius: 0;
@@ -30,4 +30,13 @@ body {
     border-top-left-radius: 0;
     border-top-right-radius: 0;
   }
+
+  .btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #e3e3e3;
+  color: rgb(0, 0, 0);
+  text-decoration: none;
+  border-radius: 2px;
+}
 
