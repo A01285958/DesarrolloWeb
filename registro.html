@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Conecta el archivo css para el estilo -->
+        <link rel ="stylesheet" href="registro.css">
+        <title>Registro</title>
+    </head>
+    <body>
+        <header>
+            <h1>Nombre del Sitio / Logo</h1>
+            <!-- Navigation bar -->
+            <nav>
+                <ul>
+                    <li><a href="#">Login</a></li>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Contenido</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Other</a></li>
+                </ul>
+            </nav>
+        </header>
+        <main class = "page">
+            <section class = form-singup>
+                <form action="login.html">
+                    <h1>Registro</h1>
+                    <div class = "form-floating">
+                        <label for="floatingInput">Name</label>
+                        <br>
+                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
+                    </div>
+
+                    <div class = "form-floating">
+                        <label for="floatingInput">Username</label>
+                        <br>
+                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                    </div>
+
+                    <div class = 'form-floating'>
+                        <label for="floatingInput">Password</label>
+                        <br>
+                        <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                    </div>  
+                    <br>
+                    <button id="btnRegister" type="submit">Register</button> 
+                </form>
+            </section>
+        </main>
+        <footer>
+            Desarrollo Web
+        </footer>
+    </body>
+  </html>
