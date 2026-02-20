@@ -1,3 +1,4 @@
+<!-- TODO Hacer funcional el registro -->
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,7 +14,7 @@
             <!-- Navigation bar -->
             <nav>
                 <ul>
-                    <li><a href="#">Login</a></li>
+                    <li><a href="login.html">Login</a></li>
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Contenido</a></li>
                     <li><a href="#">About Us</a></li>
@@ -23,24 +24,24 @@
         </header>
         <main class = "page">
             <section class = form-singup>
-                <form action="login.html">
+                <form>
                     <h1>Registro</h1>
                     <div class = "form-floating">
                         <label for="floatingInput">Name</label>
                         <br>
-                        <input type="text" class="form-control" id="floatingInput" placeholder="Name">
+                        <input type="text" class="form-control" id="nameInput" placeholder="Name">
                     </div>
 
                     <div class = "form-floating">
                         <label for="floatingInput">Username</label>
                         <br>
-                        <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
+                        <input type="email" class="form-control" id="emailInput" placeholder="name@example.com">
                     </div>
 
                     <div class = 'form-floating'>
                         <label for="floatingInput">Password</label>
                         <br>
-                        <input type="password" class="form-control" id="floatingInput" placeholder="password">
+                        <input type="password" class="form-control" id="passwordInput" placeholder="password">
                     </div>  
                     <br>
                     <button id="btnRegister" type="submit">Register</button> 
@@ -50,5 +51,6 @@
         <footer>
             Desarrollo Web
         </footer>
+    <script src="registro.js"></script>
     </body>
   </html>
