@@ -27,7 +27,7 @@ form.addEventListener("submit", function (event) {
 
   if (esValidUser) {
     alert("Bienvenido " + ValidUser.name);
-    window.location.href = "home.html";
+    window.location.href = "/Paginas/home.html";
     return;
   }
 
@@ -40,7 +40,7 @@ form.addEventListener("submit", function (event) {
 
   if (usuarioEncontrado) {
     alert("Bienvenido " + usuarioEncontrado.name);
-    window.location.href = "home.html";
+    window.location.href = "/Paginas/home.html";
   } else {
     alert("Usuario o contraseña incorrectos");
   }
