@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,13 +10,13 @@
     </head>
     <body>
         <main class="form-signin ">
-            <form action="home.html">
+            <form>
                 <h1>Inicio de Sesion</h1>
                 <!-- Contenedor del campo Username -->
                 <div class="form-floating">
                 <label for="floatingInput">Nombre de Usuario o Correo</label>
                 <br>
-                <!-- Campo de texto para ingresar usuario -->
+                <!-- Campo de texto para ingresar usuario / correo -->
                 <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
                 </div>
                 <!-- Contenedor del campo password -->
@@ -29,8 +30,9 @@
                 <button id="btnLogin" type="submit">Iniciar Sesion</button>
             </form>
             <br>
-            <a href="registro.html" class="btn">Registrarse</a>
+            <button type="button" id="btnRegistro">Registrarse</button>
         </main> 
-        
+    <script src="login.js"></script>  
     </body>
 </html>
+
