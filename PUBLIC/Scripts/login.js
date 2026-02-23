@@ -2,7 +2,7 @@
 const btnRegistro = document.getElementById("btnRegistro");
 
 btnRegistro.addEventListener("click", function () {
-  window.location.href = "registro.html";
+  window.location.href = "../Paginas/registro.html";
 });
 
 // Tomamos el formulario
@@ -21,26 +21,41 @@ form.addEventListener("submit", function (event) {
   const email = document.getElementById("floatingInput").value.trim();
   const password = document.getElementById("floatingPassword").value;
 
-  // 1) Validar contra el hardcodeado
-  const esValidUser =
-    email === ValidUser.email && password === ValidUser.password;
+  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+  let usuarioAutenticado = null;
 
-  if (esValidUser) {
-    alert("Bienvenido " + ValidUser.name);
-    window.location.href = "/Paginas/home.html";
-    return;
+    // 1) Validar usuario hardcodeado
+ if (email === ValidUser.email && password === ValidUser.password) {
+    usuarioAutenticado = ValidUser;
   }
 
-  // 2) Validar contra usuarios registrados en localStorage
-  const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
-
+  // Validar registrados
   const usuarioEncontrado = usuarios.find(
     (u) => u.email === email && u.password === password
   );
 
   if (usuarioEncontrado) {
-    alert("Bienvenido " + usuarioEncontrado.name);
-    window.location.href = "/Paginas/home.html";
+    usuarioAutenticado = usuarioEncontrado;
+  }
+
+  if (usuarioAutenticado) {
+
+    // Crear token simple
+    //btoa codifica en base64
+    //La sesion dura hsta que se cierra el navegador
+    const token = btoa(
+      JSON.stringify({
+        email: usuarioAutenticado.email,
+        loginTime: Date.now()
+      })
+    );
+
+    /// Guardar sesión
+    sessionStorage.setItem("token", token);
+    sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioAutenticado));
+
+    window.location.href = "../Paginas/home.html";
+
   } else {
     alert("Usuario o contraseña incorrectos");
   }

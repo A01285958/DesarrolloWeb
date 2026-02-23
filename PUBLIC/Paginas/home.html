@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel ="stylesheet" href="../Styles/home.css">
+        <title>Home</title>
+    </head>
+
+    <body>
+        <main>
+            <div id="header"></div>
+
+            <script>
+            fetch("../Components/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+            </script>
+        <h2>Bienvenido <span id="nombreUsuario"></span></h2>
+         <!--Una clase contenedor que tiene 3 columas  -->
+        <div class="contenedor">
+            <div class="column">Column1</div>
+            <div class="column">Column2</div>
+            <div class="column">Column3</div>
+        </div>
+
+        </main>
+
+            <div id="footer"></div>
+            <script>
+            fetch("../Components/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+            </script>
+    </body>
+    <script src="../Scripts/guard.js"></script>
+    <script src="../Scripts/home.js"></script>
+    <script src="../Scripts/cerrarSesion.js"></script>
+
+</html>
