@@ -54,7 +54,6 @@ form.addEventListener("submit", function (event) {
     sessionStorage.setItem("token", token);
     sessionStorage.setItem("usuarioActivo", JSON.stringify(usuarioAutenticado));
 
-    alert("Bienvenido " + usuarioAutenticado.name);
     window.location.href = "../Paginas/home.html";
 
   } else {

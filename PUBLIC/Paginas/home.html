@@ -7,14 +7,6 @@
         <title>Home</title>
     </head>
 
-    <script>
-        const token = sessionStorage.getItem("token");
-
-        if (!token) {
-            window.location.href = "../index.html";
-        }
-    </script>
-
     <body>
         <main>
             <div id="header"></div>
@@ -45,6 +37,7 @@
             });
             </script>
     </body>
+    <script src="../Scripts/guard.js"></script>
     <script src="../Scripts/home.js"></script>
     <script src="../Scripts/cerrarSesion.js"></script>
 
