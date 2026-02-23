@@ -8,19 +8,14 @@
         <title>Registro</title>
     </head>
     <body>
-        <header>
-            <h1>Nombre del Sitio / Logo</h1>
-            <!-- Navigation bar -->
-            <nav>
-                <ul>
-                    <li><a href="../Paginas/login.html">Login</a></li>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Contenido</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Other</a></li>
-                </ul>
-            </nav>
-        </header>
+        <div id="header"></div>
+            <script>
+            fetch("../Components/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+            </script>
         <main class = "page">
             <section class = form-singup>
                 <form>
@@ -47,9 +42,14 @@
                 </form>
             </section>
         </main>
-        <footer>
-            Desarrollo Web
-        </footer>
+            <div id="footer"></div>
+            <script>
+            fetch("../Components/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+            </script>
     <script src="../Scripts/registro.js"></script>
     </body>
   </html>

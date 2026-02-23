@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="../Styles/home.css">
+    <title>Contenido</title>
+</head>
+<body>
+    <main>
+        <div id="header"></div>
+
+            <script>
+            fetch("../Components/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+            </script>
+    <h1>Contenido</h1>
+    <div class = "contenedor">
+        <!-- Contenedor con 3 columnas que tienen imagenes -->
+        <div class="column"><img src="../Components/hearts1.png"></div>
+        <div class="column"><img src="../Components/hearts1.png"></div>
+        <div class="column"><img src="../Components/hearts1.png"></div>
+    </div>
+
+    </main>
+            <div id="footer"></div>
+            <script>
+            fetch("../Components/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+            </script>
+
+</body>
+</html>

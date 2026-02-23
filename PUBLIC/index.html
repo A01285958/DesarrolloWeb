@@ -9,7 +9,18 @@
         <title>Login</title>
     </head>
     <body>
-        <main class="form-signin ">
+        <!-- TODO Agregar header -->
+         <div id="header"></div>
+            <script>
+            fetch("../Components/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+            </script>
+        
+        <main class = "page">
+            <section class= "form-signin">
             <form>
                 <h1>Inicio de Sesion</h1>
                 <!-- Contenedor del campo Username -->
@@ -31,7 +42,18 @@
             </form>
             <br>
             <button type="button" id="btnRegistro">Registrarse</button>
-        </main> 
+            </section>
+        </main>
+        <!-- TODO agregar footer -->
+         <div id="footer"></div>
+            <script>
+            fetch("../Components/footer.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("footer").innerHTML = data;
+            });
+           </script>
+
     <script src="../Scripts/login.js"></script>  
     </body>
 </html>

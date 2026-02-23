@@ -34,5 +34,5 @@ form.addEventListener("submit", function (event) {
     localStorage.setItem("usuarios", JSON.stringify(usuarios));
 
     alert("Registro exitoso");
-    window.location.href = "../Paginas/login.html";
+    window.location.href = "../index.html";
 });

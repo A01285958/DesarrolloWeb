@@ -1,12 +1,3 @@
-/* Alinear el contenedor completo al centro */
-body {
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    text-align: center;
-    background-color: rgb(253, 240, 255);
-}
-
 header {
     background-color: #232323; /* Color de fondo oscuro */
     color: white; /* Color de texto */
@@ -14,6 +5,8 @@ header {
     display: flex; /* Alinea logo y nav horizontalmente */
     justify-content: space-between; /* Separa logo y nav */
     align-items: center; /* Centra verticalmente */
+    width: 100%;
+    box-sizing: border-box;
 }
 header h1 {
     margin: 0;
@@ -33,22 +26,4 @@ header nav ul li {
 header nav ul li a {
     text-decoration: none;
     color: white;
-}
-
-
-/* Darle estilo al contenedor del forms */
-.page {
-  min-height: calc(100vh - 80px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.form-singup {
-  max-width: 350px;
-  padding: 5rem;
-  background: #ccaada;
-  border-radius: 50px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel ="stylesheet" href="../Styles/home.css">
+    <title>About us</title>
+</head>
+<body>
+    <main>
+        <div id="header"></div>
+
+            <script>
+            fetch("../Components/header.html")
+            .then(res => res.text())
+            .then(data => {
+                document.getElementById("header").innerHTML = data;
+            });
+            </script>
+
+            <h1>About Us</h1>
+            <p>Texto</p>
+    </main>
+        <div id="footer"></div>
+                    <script>
+                    fetch("../Components/footer.html")
+                    .then(res => res.text())
+                    .then(data => {
+                        document.getElementById("footer").innerHTML = data;
+                    });
+                    </script>
+</body>
+</html>
