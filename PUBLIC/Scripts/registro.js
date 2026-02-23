@@ -36,3 +36,9 @@ form.addEventListener("submit", function (event) {
     alert("Registro exitoso");
     window.location.href = "../index.html";
 });
+
+const btnCancelar = document.getElementById("Cancelar");
+
+btnCancelar.addEventListener("click", function () {
+    window.location.href = "../index.html";
+});

@@ -8,14 +8,6 @@
         <title>Registro</title>
     </head>
     <body>
-        <div id="header"></div>
-            <script>
-            fetch("../Components/header.html")
-            .then(res => res.text())
-            .then(data => {
-                document.getElementById("header").innerHTML = data;
-            });
-            </script>
         <main class = "page">
             <section class = form-singup>
                 <form>
@@ -40,6 +32,7 @@
                     <br>
                     <button id="btnRegister" type="submit">Register</button> 
                 </form>
+                <button id="Cancelar" type="button">Cancelar</button> 
             </section>
         </main>
             <div id="footer"></div>

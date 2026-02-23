@@ -7,6 +7,14 @@
         <title>Home</title>
     </head>
 
+    <script>
+        const token = sessionStorage.getItem("token");
+
+        if (!token) {
+            window.location.href = "../index.html";
+        }
+    </script>
+
     <body>
         <main>
             <div id="header"></div>
@@ -18,6 +26,7 @@
                 document.getElementById("header").innerHTML = data;
             });
             </script>
+        <h2>Bienvenido <span id="nombreUsuario"></span></h2>
          <!--Una clase contenedor que tiene 3 columas  -->
         <div class="contenedor">
             <div class="column">Column1</div>
@@ -36,4 +45,7 @@
             });
             </script>
     </body>
+    <script src="../Scripts/home.js"></script>
+    <script src="../Scripts/cerrarSesion.js"></script>
+
 </html>
