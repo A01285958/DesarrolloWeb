@@ -1,6 +1,6 @@
-async function obtenerPokemon() {
+async function obtenerPokemon(nombre) {
   try {
-    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/ditto`);
+    const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
     
     if (!response.ok) {
       throw new Error("Pokémon no encontrado");
@@ -22,4 +22,4 @@ async function obtenerPokemon() {
   }
 }
 
-obtenerPokemon();
+obtenerPokemon("ditto");
