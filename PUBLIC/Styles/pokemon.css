@@ -10,15 +10,24 @@ body {
 main {
   flex: 1;
   display: flex;
-  justify-content: center;   /* centra horizontal */
-  align-items: center;       /* centra vertical */
+  flex-direction: column; 
+  justify-content: center;  /* centra vertical */
+  align-items: center;      /* centra horizontal */
 }
-
+#pokemonContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 30px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
 .pokemon-card {
-    background: white;
+    background: rgb(227, 205, 217);
     width: 300px;
     margin: 40px auto;
-    padding: 30px;
+    padding: 15px;
     border-radius: 15px;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
     text-align: center;

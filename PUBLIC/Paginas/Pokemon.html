@@ -9,12 +9,22 @@
 <body>
     <div id="header"></div>
   <main>
-    <!-- Encerrar contenido en un contenedor -->
-    <div class="pokemon-card">
-      <h1>Pokemon</h1>
-      <h2 id="pokemonNombre">Nombre:</h2>
-      <img id="pokemonImg" src="" alt="pokemon">
-    </div>
+    <h1 id="Title">Pokemon</h1>
+    <!-- Encerrar todas las tarjetas es un contenedor -->
+    <div id="pokemonContainer"></div>
+
+
+    <template id="pokemonTemplate">
+      <div class="pokemon-card">
+        <img class="pokemonImg" src="" alt="">
+        <h2 class="pokemonNombre"></h2>
+        <h3 class="pokemonNum"></h3>
+        <h3>Tipo</h3>
+        <p class="pokemonTipo"></p>
+        <h3>Habilidades</h3>
+        <p class="pokemonHabilidades"></p>
+      </div>
+    </template>
   </main>
     <div id="footer"></div>
 </body>
