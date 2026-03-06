@@ -6,17 +6,28 @@
   <link rel="stylesheet" href="../Styles/Pokemon.css">
   <title>Pokemon</title>
 </head>
+
 <body>
-    <div id="header"></div>
+  <div id="header"></div>
+
   <main>
     <h1 id="Title">Pokemon</h1>
-    <!-- Encerrar todas las tarjetas es un contenedor -->
-    <div id="pokemonContainer"></div>
 
+    <div class="filtros">
+      <input type="text" id="searchInput" placeholder="Buscar Pokémon...">
+
+      <select id="filterType">
+        <option value="nombre">Nombre</option>
+        <option value="id">ID</option>
+        <option value="tipo">Tipo</option>
+      </select>
+    </div>
+
+    <div id="pokemonContainer"></div>
 
     <template id="pokemonTemplate">
       <div class="pokemon-card">
-        <img class="pokemonImg" src="" alt="">
+        <img class="pokemonImg" src="" alt="pokemon">
         <h2 class="pokemonNombre"></h2>
         <h3 class="pokemonNum"></h3>
         <h3>Tipo</h3>
@@ -26,11 +37,13 @@
       </div>
     </template>
   </main>
-    <div id="footer"></div>
-</body>
+
+  <div id="footer"></div>
+
   <script src="../Scripts/guard.js"></script>
   <script src="../Scripts/header.js"></script>
   <script src="../Scripts/footer.js"></script>
   <script src="../Scripts/cerrarSesion.js"></script>
   <script src="../Scripts/app.js"></script>
+</body>
 </html>

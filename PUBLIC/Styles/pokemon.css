@@ -1,44 +1,49 @@
 html, body {
-  height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-body {
+main {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
-main {
-  flex: 1;
+
+.filtros {
   display: flex;
-  flex-direction: column; 
-  justify-content: center;  /* centra vertical */
-  align-items: center;      /* centra horizontal */
+  justify-content: center;
+  gap: 15px;
+  margin: 20px 0;
 }
+
+#searchInput,
+#filterType {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+}
+
 #pokemonContainer {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 20px;
-  padding: 30px;
+  gap: 30px;
   width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  max-width: 1400px;
+  padding: 30px;
+  box-sizing: border-box;
 }
+
 .pokemon-card {
-    background: rgb(227, 205, 217);
-    width: 300px;
-    margin: 40px auto;
-    padding: 15px;
-    border-radius: 15px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-    text-align: center;
-    transition: transform 0.3s ease;
+  background: rgb(225, 126, 179);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
-.pokemon-card:hover {
-    transform: translateY(-5px);
-}
-
-.pokemon-card img{
-    width: 200px;
-    margin-top: 30px;
+.pokemon-card img {
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
 }
