@@ -15,15 +15,12 @@
 
     <div class="filtros">
       <input type="text" id="searchInput" placeholder="Buscar Pokémon...">
-
-      <select id="filterType">
-        <option value="nombre">Nombre</option>
-        <option value="id">ID</option>
-        <option value="tipo">Tipo</option>
-      </select>
     </div>
 
     <div id="pokemonContainer"></div>
+    <div class="contenedor-boton">
+      <button id="loadMoreBtn">Cargar Mas Pokemon</button>
+    </div>
 
     <template id="pokemonTemplate">
       <div class="pokemon-card">
