@@ -1,11 +1,17 @@
+// Cantidad de Pokemon que se cargan por bloque
 let limit = 20;
+// Desde qué posición empieza a cargar en la API
 let offset = 0;
+// Evita que se hagan varias cargas al mismo tiempo
 let cargando = false;
-let totalPokemones = 0;
+// Indica si el usuario está en modo búsqueda
 let modoBusqueda = false;
+// Guarda todos los nombres de Pokémon para hacer búsquedas parciales
 let listaGlobalPokemon = [];
+// Variable para retrasar la búsqueda mientras el usuario escribe
 let timeoutBusqueda;
 
+// Función para obtener un Pokémon específico por nombre o id
 async function obtenerPokemon(nombre, limpiar = false) {
   try {
     const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${nombre}`);
@@ -15,16 +21,20 @@ async function obtenerPokemon(nombre, limpiar = false) {
     }
 
     const data = await response.json();
-
+    // Contenedor donde van las tarjetas
     const container = document.getElementById("pokemonContainer");
+    // Obtiene el template HTML de una tarjeta
     const template = document.getElementById("pokemonTemplate");
 
+    // Si limpiar es true, vacía el contenedor antes de agregar nueva info
     if (limpiar) {
       container.innerHTML = "";
     }
 
+    // Clona el contenido del template
     const clone = template.content.cloneNode(true);
 
+    // Elementos de la tarjeta clonada
     const card = clone.querySelector(".pokemon-card");
     const nombrePokemon = clone.querySelector(".pokemonNombre");
     const imgPokemon = clone.querySelector(".pokemonImg");
@@ -43,11 +53,8 @@ async function obtenerPokemon(nombre, limpiar = false) {
 
     const habilidades = data.abilities.map(a => a.ability.name).join(", ");
     abilitesPokemon.textContent = habilidades;
-
-    card.dataset.nombre = data.name.toLowerCase();
-    card.dataset.id = String(data.id);
-    card.dataset.tipo = data.types.map(t => t.type.name.toLowerCase()).join(", ");
-
+    
+    // Agrega la tarjeta al contenedor
     container.appendChild(clone);
 
   } catch (error) {
@@ -58,6 +65,8 @@ async function obtenerPokemon(nombre, limpiar = false) {
 
 // obtenerPokemon(ditto)
 
+// Carga una lista global con todos los nombres de Pokémon desde la API
+// Sirve para hacer búsquedas parciales por nombre
 async function cargarListaGlobalPokemon() {
   try {
     const response = await fetch("https://pokeapi.co/api/v2/pokemon?limit=100000&offset=0");
@@ -68,34 +77,45 @@ async function cargarListaGlobalPokemon() {
   }
 }
 
+// Obtiene una lista de Pokémon por bloques usando limit y offset
 async function obtenerListaPokemon(limit, offset) {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`);
   const data = await response.json();
+  // Guarda cuántos Pokémon existen en total
   totalPokemones = data.count;
+  // Regresa solo los nombres
   return data.results.map(p => p.name);
 }
 
+// Carga Pokémon normales al inicio o con el botón "Cargar más"
 async function cargarPokemons() {
   if (cargando || modoBusqueda) return;
 
   cargando = true;
 
+  // Obtiene el botón de cargar más
   const loadMoreBtn = document.getElementById("loadMoreBtn");
+  // Desactiva el botón mientras carga
   loadMoreBtn.disabled = true;
   loadMoreBtn.textContent = "Cargando...";
 
   try {
+    // Obtiene la siguiente lista de nombres
     const nombres = await obtenerListaPokemon(limit, offset);
 
+    // Carga cada Pokémon uno por uno
     for (const nombre of nombres) {
       await obtenerPokemon(nombre);
     }
 
+    // Avanza el offset para la siguiente carga
     offset += limit;
 
+    // Si ya no quedan más Pokémon, oculta el botón
     if (offset >= totalPokemones) {
       loadMoreBtn.style.display = "none";
     } else {
+      // Si aún quedan, reactiva el botón
       loadMoreBtn.disabled = false;
       loadMoreBtn.textContent = "Cargar más Pokémon";
     }
@@ -109,6 +129,7 @@ async function cargarPokemons() {
   cargando = false;
 }
 
+// Busca un Pokémon por id exacto
 async function buscarPorId(id) {
   const container = document.getElementById("pokemonContainer");
   container.innerHTML = "";
@@ -122,10 +143,12 @@ async function buscarPorId(id) {
   }
 }
 
+// Busca Pokémon por coincidencia parcial en el nombre
 async function buscarPorNombre(texto) {
   const container = document.getElementById("pokemonContainer");
   container.innerHTML = "";
 
+  // Filtra los nombres que contengan el texto escrito
   const coincidencias = listaGlobalPokemon.filter(nombre =>
     nombre.includes(texto.toLowerCase())
   );
@@ -134,8 +157,10 @@ async function buscarPorNombre(texto) {
     return false;
   }
 
+  // Solo toma los primeros 20 resultados para no saturar
   const primerosResultados = coincidencias.slice(0, 20);
 
+  // Obtiene la información completa de cada uno
   for (const nombre of primerosResultados) {
     await obtenerPokemon(nombre);
   }
@@ -143,17 +168,19 @@ async function buscarPorNombre(texto) {
   return true;
 }
 
+// Busca Pokémon por tipo
 async function buscarPorTipo(tipo) {
   const container = document.getElementById("pokemonContainer");
   container.innerHTML = "";
 
   try {
+    // Pide a la API todos los Pokémon de ese tipo
     const response = await fetch(`https://pokeapi.co/api/v2/type/${tipo.toLowerCase()}`);
 
+    // Si el tipo no existe, lanza error
     if (!response.ok) {
       throw new Error("Tipo no encontrado");
     }
-
     const data = await response.json();
     const lista = data.pokemon.slice(0, 20);
 
@@ -173,6 +200,7 @@ async function buscarPorTipo(tipo) {
   }
 }
 
+// Maneja la búsqueda automática
 async function manejarBusqueda() {
   const texto = document.getElementById("searchInput").value.toLowerCase().trim();
   const loadMoreBtn = document.getElementById("loadMoreBtn");
@@ -189,11 +217,13 @@ async function manejarBusqueda() {
     return;
   }
 
+  // Si hay texto, entra en modo búsqueda
   modoBusqueda = true;
   loadMoreBtn.style.display = "none";
   container.innerHTML = "";
 
   // Si son solo números, buscar por ID
+  // Utiliza la expresion regular para saber si en la cadena de texto hay solo numeros
   if (/^\d+$/.test(texto)) {
     await buscarPorId(texto);
     return;
@@ -214,13 +244,17 @@ async function manejarBusqueda() {
   }
 }
 
+// Función inicial al cargar la página
 async function iniciarApp() {
   await cargarListaGlobalPokemon();
+  // Carga los primeros Pokémon visibles
   await cargarPokemons();
 }
 
+// Evento del botón "Cargar más"
 document.getElementById("loadMoreBtn").addEventListener("click", cargarPokemons);
 
+// Evento del input de búsqueda con retraso de 400 ms
 document.getElementById("searchInput").addEventListener("input", () => {
   clearTimeout(timeoutBusqueda);
 
