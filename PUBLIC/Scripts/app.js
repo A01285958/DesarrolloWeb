@@ -11,6 +11,9 @@ let listaGlobalPokemon = [];
 // Variable para retrasar la búsqueda mientras el usuario escribe
 let timeoutBusqueda;
 
+//Agregar a una lista los 2 pokemones seleccionados para la pelea
+let pokemonesSeleccionados = [];
+
 // Función para obtener un Pokémon específico por nombre o id
 async function obtenerPokemon(nombre, limpiar = false) {
   try {
@@ -41,6 +44,7 @@ async function obtenerPokemon(nombre, limpiar = false) {
     const tipoPokemon = clone.querySelector(".pokemonTipo");
     const abilitesPokemon = clone.querySelector(".pokemonHabilidades");
     const numPokemon = clone.querySelector(".pokemonNum");
+    const selectBtn = clone.querySelector(".selectPokemonBtn");
 
     nombrePokemon.textContent = `Nombre: ${data.name}`;
     numPokemon.textContent = `No. ${data.id}`;
@@ -53,6 +57,22 @@ async function obtenerPokemon(nombre, limpiar = false) {
 
     const habilidades = data.abilities.map(a => a.ability.name).join(", ");
     abilitesPokemon.textContent = habilidades;
+
+    const pokemonData = {
+      id: data.id,
+      name: data.name,
+      img: data.sprites.front_default,
+      types: data.types.map(t => t.type.name),
+      abilities: data.abilities.map(a => a.ability.name)
+    };
+
+    if (pokemonesSeleccionados.find(p => p.id === data.id)){
+      card.classList.add("selected");
+    }
+
+    selectBtn.addEventListener("click", () => {
+      seleccionarPokemon(pokemonData, card);
+    });
     
     // Agrega la tarjeta al contenedor
     container.appendChild(clone);
@@ -157,8 +177,8 @@ async function buscarPorNombre(texto) {
     return false;
   }
 
-  // Solo toma los primeros 20 resultados para no saturar
-  const primerosResultados = coincidencias.slice(0, 20);
+  // Solo toma los primeros 30 resultados para no saturar
+  const primerosResultados = coincidencias.slice(0, 30);
 
   // Obtiene la información completa de cada uno
   for (const nombre of primerosResultados) {
@@ -182,7 +202,7 @@ async function buscarPorTipo(tipo) {
       throw new Error("Tipo no encontrado");
     }
     const data = await response.json();
-    const lista = data.pokemon.slice(0, 20);
+    const lista = data.pokemon.slice(0, 30);
 
     if (lista.length === 0) {
       return false;
@@ -244,6 +264,48 @@ async function manejarBusqueda() {
   }
 }
 
+//Funcion para seleccionar
+function seleccionarPokemon(pokemonData, card) {
+  const yaExiste = pokemonesSeleccionados.find(p => p.id === pokemonData.id);
+
+  if (yaExiste) {
+    pokemonesSeleccionados = pokemonesSeleccionados.filter(p => p.id !== pokemonData.id);
+    card.classList.remove("selected");
+  } else {
+    if (pokemonesSeleccionados.length >= 2) {
+      alert("Solo puedes seleccionar 2 Pokémon.");
+      return;
+    }
+
+    pokemonesSeleccionados.push(pokemonData);
+    card.classList.add("selected");
+  }
+
+  const texto = document.getElementById("selectedPokemonsText");
+  const boton = document.getElementById("startBattleBtn");
+
+  if (pokemonesSeleccionados.length === 0) {
+    texto.textContent = "Selecciona 2 Pokémon para pelear";
+    boton.disabled = true;
+  } else if (pokemonesSeleccionados.length === 1) {
+    texto.textContent = `Seleccionado: ${pokemonesSeleccionados[0].name}`;
+    boton.disabled = true;
+  } else {
+    texto.textContent = `Pelea: ${pokemonesSeleccionados[0].name} vs ${pokemonesSeleccionados[1].name}`;
+    boton.disabled = false;
+  }
+}
+
+//Funcion para guardar y cambiar de vista
+function irABatalla(){
+  if(pokemonesSeleccionados.length !== 2){
+    alert("Debes seleccionar 2 Pokemones");
+    return;
+  }
+  sessionStorage.setItem("pokemonBatalla", JSON.stringify(pokemonesSeleccionados));
+  window.location.href = "../Paginas/batallaPokemon.html";
+}
+
 // Función inicial al cargar la página
 async function iniciarApp() {
   await cargarListaGlobalPokemon();
@@ -251,6 +313,7 @@ async function iniciarApp() {
   await cargarPokemons();
 }
 
+document.getElementById("startBattleBtn").addEventListener("click", irABatalla);
 // Evento del botón "Cargar más"
 document.getElementById("loadMoreBtn").addEventListener("click", cargarPokemons);
 
@@ -262,5 +325,4 @@ document.getElementById("searchInput").addEventListener("input", () => {
     manejarBusqueda();
   }, 400);
 });
-
 iniciarApp();
