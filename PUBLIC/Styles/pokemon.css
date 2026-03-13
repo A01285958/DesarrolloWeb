@@ -16,6 +16,48 @@ main {
   margin: 20px 0;
 }
 
+.battle-panel {
+  width: 90%;
+  max-width: 900px;
+  margin: 20px auto;
+  padding: 20px;
+  background: #f5d7ec;
+  border-radius: 15px;
+  text-align: center;
+}
+
+#startBattleBtn {
+  background-color: #e8c2e4;
+  color: black;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+#startBattleBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.selectPokemonBtn {
+  margin-top: 12px;
+  background-color: #f5e3f1;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.selectPokemonBtn:hover {
+  background-color: #e8c2e4;
+}
+
+.pokemon-card.selected {
+  outline: 4px solid #7a2d63;
+}
+
 #searchInput,
 #filterType {
   padding: 10px 14px;

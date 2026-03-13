@@ -1,0 +1,86 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
+
+.battle-status {
+  width: 90%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.fighter-card {
+  flex: 1;
+  min-width: 250px;
+  background: rgb(225, 126, 179);
+  padding: 20px;
+  border-radius: 15px;
+  text-align: center;
+}
+
+.fighter-card img {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+}
+
+.vs {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.battle-controls {
+  margin: 25px 0;
+}
+
+#startFightNowBtn {
+  background-color: #e8c2e4;
+  color: black;
+  border: none;
+  padding: 14px 28px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.battle-log {
+  width: 90%;
+  max-width: 1000px;
+  min-height: 180px;
+  max-height: 400px;
+  overflow-y: auto;
+  background: #fff4fb;
+  border-radius: 15px;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.log-line {
+  background: #f9edf6;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.winner-box {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.winner-box img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
